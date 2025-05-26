@@ -42,12 +42,14 @@ def estimate_rhythm(video_path):
     return movement_count
 
 # Loop through all videos
-for filename in os.listdir(video_folder):
-    if filename.endswith(".mp4"):
-        print(f"Processing video: {filename}")
-        path = os.path.join(video_folder, filename)
-        rhythm = estimate_rhythm(path)
-        output_data.append({"video": filename, "rhythm_score": rhythm})
+def process_all_videos(video_folder, output_data):
+    for filename in os.listdir(video_folder):
+        if filename.endswith(".mp4"):
+            print(f"Processing video: {filename}")
+            path = os.path.join(video_folder, filename)
+            rhythm = estimate_rhythm(path)
+            output_data.append({"video": filename, "rhythm_score": rhythm})
+
 
 # Save to CSV
 df = pd.DataFrame(output_data)

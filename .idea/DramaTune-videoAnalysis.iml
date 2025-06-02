@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
   <component name="NewModuleRootManager">
-    <orderEntry type="jdk" jdkName="$USER_HOME$/miniconda3" jdkType="Python SDK" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/.venv" />
+    </content>
+    <orderEntry type="jdk" jdkName="Python 3.12 virtualenv at C:\Users\Kim\Adapting-music-to-dramatic-scenes-in-movies\.venv (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

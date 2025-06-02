@@ -3,7 +3,7 @@ import os
 from music_recommendation import get_top3_music_for_video
 from analyze_rhythm import estimate_rhythm
 from flask_cors import CORS
-import moviepy.editor as mpe
+import moviepy as mpe
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
@@ -11,6 +11,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 CORS(app)
 
+"""
 @app.route('/merge_and_download', methods=['POST'])
 def merge_and_download():
     video = request.files['video']
@@ -34,11 +35,55 @@ def merge_and_download():
     audio_clip = mpe.AudioFileClip(music_path)
     loops = int(video_clip.duration // audio_clip.duration) + 1
     full_audio = mpe.concatenate_audioclips([audio_clip] * loops)
-    full_audio = full_audio.subclip(0, video_clip.duration)
-    video_with_audio = video_clip.set_audio(full_audio)
+    full_audio = full_audio.with_duration(video_clip.duration)
+    video_with_audio = video_clip.with_audio(full_audio)
     video_with_audio.write_videofile(output_path, codec='libx264', audio_codec='aac')
 
     # Return merged file for download
+    return send_file(output_path, as_attachment=True)
+    
+    """
+
+@app.route('/merge_and_download', methods=['POST'])
+def merge_and_download():
+    video = request.files['video']
+    music_title = request.form['music']
+
+    # ✅ Get optional audio-tune preferences
+    add_fade = request.form.get('add_fade') == 'true'
+    mood_intensity = int(request.form.get('mood_intensity', 50))
+    instrumentation = int(request.form.get('instrumentation', 50))
+
+    # Save uploaded video
+    upload_folder = 'uploads'
+    os.makedirs(upload_folder, exist_ok=True)
+    video_path = os.path.join(upload_folder, video.filename)
+    video.save(video_path)
+
+    # Full music path
+    music_folder = 'music'
+    music_path = os.path.join(music_folder, music_title)
+
+    # Output path
+    output_path = os.path.join(upload_folder, f"merged_{video.filename}")
+
+    # Load media
+    video_clip = mpe.VideoFileClip(video_path)
+    audio_clip = mpe.AudioFileClip(music_path)
+
+    # ✅ Apply fade if requested
+    if add_fade:
+        audio_clip = audio_clip.audio_fadein(3).audio_fadeout(3)
+
+    # Loop and trim audio to video duration
+    loops = int(video_clip.duration // audio_clip.duration) + 1
+    full_audio = mpe.concatenate_audioclips([audio_clip] * loops)
+    full_audio = full_audio.with_duration(video_clip.duration)
+
+    # Merge
+    final_video = video_clip.with_audio(full_audio)
+    final_video.write_videofile(output_path, codec='libx264', audio_codec='aac')
+
     return send_file(output_path, as_attachment=True)
 
 @app.route('/music/<filename>')

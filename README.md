@@ -68,7 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-## app
+## App
 
 how to run the project: (in Win64, Pycharm)
 - run the backend in the flask terminal by: >>>python backend.py
@@ -83,13 +83,17 @@ and later on will have finetune components.
 ### Dataset
 
 The dataset used is music dataset that consists of dramatic soundtracks from kaggle,
+https://www.kaggle.com/datasets/shanmukh05/music-classification
 and video dataset that consists of short videos with a dramatic tempo up to 30 seconds.
 
 ### Applications
 
 This application consists of a few main files.
+
 Dramatune.js - in charge of the main aspects of the website, alongside connecting to the backend for various components (video, audio)
+
 backend.py - in charge of connecting between the UI (frontend) and the backend (ML model, csvs - data collected and tagged)
+
 index.css - in charge of personilizing the website's various accents
 
 here is the various stages of using the app:

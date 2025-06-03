@@ -68,24 +68,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# app
+### app
 
 how to run the project: (in Win64)
 - run the backend in the flask terminal by: >>>python backend.py
 - run the frontend and the project website in the main terminal by: npm start
 
-#Project Overview
+### Project Overview
 
 This project uses Machine learning model by Random Forest to compile a merged video with uploaded by the user,
 and by the user choice out of 3 audios suggested to him, the user receives a merged video with the selected audio,
 and later on will have finetune components.
 
-#Dataset
+### Dataset
 
 The dataset used is music dataset that consists of dramatic soundtracks from kaggle,
 and video dataset that consists of short videos with a dramatic tempo up to 30 seconds.
 
-#Applications
+### Applications
 
 This application consists of a few main files.
 Dramatune.js - in charge of the main aspects of the website, alongside connecting to the backend for various components (video, audio)

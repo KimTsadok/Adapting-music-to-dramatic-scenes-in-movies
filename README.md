@@ -70,7 +70,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 ### app
 
-how to run the project: (in Win64)
+how to run the project: (in Win64, Pycharm)
 - run the backend in the flask terminal by: >>>python backend.py
 - run the frontend and the project website in the main terminal by: npm start
 

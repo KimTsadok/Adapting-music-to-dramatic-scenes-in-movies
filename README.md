@@ -116,4 +116,12 @@ how to run the project:
 ├── normalized_music_tempo.csv    <- Normalized version of music tempo data.
 ├── normalized_video_rhythm.csv   <- Normalized version of video rhythm data.
 │
-├── top_3_matches.
+├── top_3_matches.csv             <- Output file: top 3 recommended tracks for each video.
+├── video_music_matches.csv       <- Output file: all video–music similarity scores.
+│
+├── src                      <- Frontend React source code.
+│   ├── App.js               <- Main app component for DramaTune.
+│   ├── DramaTune.js         <- Core UI and frontend logic for upload, analysis, and playback.
+│   ├── index.js             <- React entry point.
+│   └── index.css            <- Styling for the user interface.
+```

@@ -78,43 +78,47 @@ how to run the project:
 
 
 # Project Organization
-README.md                        <- Project overview and instructions.
-Assignments/                    <- Project documentation 
-music/                          <- Music tracks to be analyzed and recommended.
-uploads/                        <- Uploaded videos from users.
-videos/                         <- Processed/final videos with music applied.
+├── README.md                        <- Project overview and instructions.
+├── LICENSE                          <- Project license.
+├── .gitignore                       <- Files and folders to ignore in version control.
 
-src/                            <- Frontend React source code.
-│
-├── App.js                      <- Main React component.
-├── DramaTune.js                <- Core UI logic: handles upload, analysis, preview, and final merge.
-├── index.js                    <- React entry point.
-└── index.css                   <- Styling for the React components.
+├── Assignments/                     <- Project documentation.
+│   ├── Detailed Design SDD.docx
+│   ├── Detailed requirements.docx
+│   └── Literature Review.docx
 
-backend.py                      <- Flask backend: handles API routes for analysis and video/music merging.
-analyze_rhythm.py               <- Extracts rhythmic features from user-uploaded videos.
-analyze_tempo.py                <- Extracts tempo features from music tracks.
+├── music/                           <- Music tracks to be analyzed and recommended.
+├── uploads/                         <- Uploaded videos from users.
+├── videos/                          <- Processed/final videos with music applied.
 
-match_music_random_forest.py    <- Recommends music using a trained Random Forest model.
-match_music_to_videos.py        <- Matches music to videos by comparing normalized tempo and rhythm.
-match_top3_music.py             <- Selects top 3 matching tracks per video.
+├── src/                             <- Frontend React source code.
+│   ├── App.js                       <- Main React component.
+│   ├── DramaTune.js                 <- Core UI logic: handles upload, analysis, preview, final merge.
+│   ├── index.js                     <- React entry point.
+│   └── index.css                    <- Styling for the React components.
 
-music_recommendation.py         <- Orchestrates the full matching process.
-random_forest_model.pkl         <- Trained model used by `match_music_random_forest.py`.
+├── backend.py                       <- Flask backend: handles API routes for analysis and merging.
+├── analyze_rhythm.py                <- Extracts rhythm features from video (e.g., tempo, intensity).
+├── analyze_tempo.py                 <- Extracts tempo features from music tracks.
 
-normalized_music_tempo.csv      <- Preprocessed and scaled music tempo features.
-normalized_video_rhythm.csv     <- Preprocessed and scaled video rhythm features.
-music_tempo_scores.csv          <- Raw tempo scores from music analysis.
-video_rhythm_results.csv        <- Raw rhythm scores from video analysis.
+├── match_music_random_forest.py     <- Music recommendation via Random Forest model.
+├── match_music_to_videos.py         <- Matches music to videos based on tempo/rhythm distance.
+├── match_top3_music.py              <- Selects top 3 matching tracks per video.
+├── music_recommendation.py          <- Wraps analysis and matching into a unified recommendation flow.
 
-top_3_matches.csv               <- Output: top 3 matches for each video.
-video_music_matches.csv         <- Full list of video–music match scores.
+├── random_forest_model.pkl          <- Trained Random Forest model for music prediction.
 
-package.json                    <- Node.js project metadata and dependencies for frontend.
-package-lock.json               <- Locked versions of installed npm packages.
+├── normalized_music_tempo.csv       <- Scaled music tempo features.
+├── normalized_video_rhythm.csv      <- Scaled video rhythm features.
+├── music_tempo_scores.csv           <- Raw tempo scores from music analysis.
+├── video_rhythm_results.csv         <- Raw rhythm scores from video analysis.
 
-.venv/                          <- Python virtual environment (not version controlled).
-node_modules/                   <- Node.js dependencies (not version controlled).
-.gitignore                      <- Files and folders to ignore in version control.
-LICENSE                         <- Project license.
+├── video_music_matches.csv          <- Full table of music-to-video match scores.
+├── top_3_matches.csv                <- Top 3 recommended music tracks for each video.
+
+├── package.json                     <- Frontend project metadata (React, npm).
+├── package-lock.json                <- Locked npm dependency versions.
+
+├── .venv/                           <- Python virtual environment (excluded from version control).
+└── node_modules/                    <- Node.js packages (auto-generated, excluded from version control).
 

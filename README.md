@@ -78,47 +78,42 @@ how to run the project:
 
 
 # Project Organization
-├── README.md                        <- Project overview and instructions.
-├── LICENSE                          <- Project license.
-├── .gitignore                       <- Files and folders to ignore in version control.
-
-├── Assignments/                     <- Project documentation.
+```
+├── README.md                  <- Project overview and instructions.
+│
+├── Assignments               <- Project documentation.
 │   ├── Detailed Design SDD.docx
 │   ├── Detailed requirements.docx
 │   └── Literature Review.docx
-
-├── music/                           <- Music tracks to be analyzed and recommended.
-├── uploads/                         <- Uploaded videos from users.
-├── videos/                          <- Processed/final videos with music applied.
-
-├── src/                             <- Frontend React source code.
-│   ├── App.js                       <- Main React component.
-│   ├── DramaTune.js                 <- Core UI logic: handles upload, analysis, preview, final merge.
-│   ├── index.js                     <- React entry point.
-│   └── index.css                    <- Styling for the React components.
-
-├── backend.py                       <- Flask backend: handles API routes for analysis and merging.
-├── analyze_rhythm.py                <- Extracts rhythm features from video (e.g., tempo, intensity).
-├── analyze_tempo.py                 <- Extracts tempo features from music tracks.
-
-├── match_music_random_forest.py     <- Music recommendation via Random Forest model.
-├── match_music_to_videos.py         <- Matches music to videos based on tempo/rhythm distance.
-├── match_top3_music.py              <- Selects top 3 matching tracks per video.
-├── music_recommendation.py          <- Wraps analysis and matching into a unified recommendation flow.
-
-├── random_forest_model.pkl          <- Trained Random Forest model for music prediction.
-
-├── normalized_music_tempo.csv       <- Scaled music tempo features.
-├── normalized_video_rhythm.csv      <- Scaled video rhythm features.
-├── music_tempo_scores.csv           <- Raw tempo scores from music analysis.
-├── video_rhythm_results.csv         <- Raw rhythm scores from video analysis.
-
-├── video_music_matches.csv          <- Full table of music-to-video match scores.
-├── top_3_matches.csv                <- Top 3 recommended music tracks for each video.
-
-├── package.json                     <- Frontend project metadata (React, npm).
-├── package-lock.json                <- Locked npm dependency versions.
-
-├── .venv/                           <- Python virtual environment (excluded from version control).
-└── node_modules/                    <- Node.js packages (auto-generated, excluded from version control).
-
+│
+├── music                     <- Music tracks to be analyzed and matched.
+│
+├── uploads                   <- User-uploaded video files.
+│
+├── videos                    <- Final output videos with music applied.
+│
+├── .venv                     <- Python virtual environment (not tracked by Git).
+│
+├── node_modules              <- Node.js dependencies (auto-generated, not tracked by Git).
+│
+├── package.json              <- Frontend project metadata and dependencies.
+├── package-lock.json         <- Locked versions of installed npm packages.
+│
+├── backend.py                <- Flask backend server: handles analysis and merging requests.
+│
+├── analyze_rhythm.py         <- Extracts rhythmic features from user-uploaded videos.
+├── analyze_tempo.py          <- Extracts tempo and features from music tracks.
+│
+├── match_music_random_forest.py  <- Matches music to video using trained Random Forest model.
+├── match_music_to_videos.py      <- Matches music by comparing normalized rhythm/tempo.
+├── match_top3_music.py           <- Selects top 3 closest music tracks per video.
+├── music_recommendation.py       <- Orchestrates the full recommendation pipeline.
+│
+├── random_forest_model.pkl   <- Trained model used for music recommendation.
+│
+├── music_tempo_scores.csv        <- Raw tempo values from music analysis.
+├── video_rhythm_results.csv      <- Raw rhythm values from video analysis.
+├── normalized_music_tempo.csv    <- Normalized version of music tempo data.
+├── normalized_video_rhythm.csv   <- Normalized version of video rhythm data.
+│
+├── top_3_matches.

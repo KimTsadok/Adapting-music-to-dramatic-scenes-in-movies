@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -70,6 +69,52 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # app
-=======
+how to run the project:
+- run the backend in the flask terminal by: >>>python backend.py
+- run the frontend and the project website in the main terminal by: npm start
+
 # Adapting-music-to-dramatic-scenes-in-movies
->>>>>>> f262ba47d62f82e666b2619407bb4573a0416e3e
+
+
+
+# Project Organization
+README.md                        <- Project overview and instructions.
+Assignments/                    <- Project documentation 
+music/                          <- Music tracks to be analyzed and recommended.
+uploads/                        <- Uploaded videos from users.
+videos/                         <- Processed/final videos with music applied.
+
+src/                            <- Frontend React source code.
+│
+├── App.js                      <- Main React component.
+├── DramaTune.js                <- Core UI logic: handles upload, analysis, preview, and final merge.
+├── index.js                    <- React entry point.
+└── index.css                   <- Styling for the React components.
+
+backend.py                      <- Flask backend: handles API routes for analysis and video/music merging.
+analyze_rhythm.py               <- Extracts rhythmic features from user-uploaded videos.
+analyze_tempo.py                <- Extracts tempo features from music tracks.
+
+match_music_random_forest.py    <- Recommends music using a trained Random Forest model.
+match_music_to_videos.py        <- Matches music to videos by comparing normalized tempo and rhythm.
+match_top3_music.py             <- Selects top 3 matching tracks per video.
+
+music_recommendation.py         <- Orchestrates the full matching process.
+random_forest_model.pkl         <- Trained model used by `match_music_random_forest.py`.
+
+normalized_music_tempo.csv      <- Preprocessed and scaled music tempo features.
+normalized_video_rhythm.csv     <- Preprocessed and scaled video rhythm features.
+music_tempo_scores.csv          <- Raw tempo scores from music analysis.
+video_rhythm_results.csv        <- Raw rhythm scores from video analysis.
+
+top_3_matches.csv               <- Output: top 3 matches for each video.
+video_music_matches.csv         <- Full list of video–music match scores.
+
+package.json                    <- Node.js project metadata and dependencies for frontend.
+package-lock.json               <- Locked versions of installed npm packages.
+
+.venv/                          <- Python virtual environment (not version controlled).
+node_modules/                   <- Node.js dependencies (not version controlled).
+.gitignore                      <- Files and folders to ignore in version control.
+LICENSE                         <- Project license.
+

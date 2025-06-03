@@ -107,7 +107,7 @@ here is the various stages of using the app:
 ![image](https://github.com/user-attachments/assets/bfa1e7e2-0a0a-481a-9b65-8ac5e14fa203)
 
 - here is the last page of the app, where the user can preview the merged video, with an option for download,
- alongside audio effects components which hasn't been properly implemented yet.
+ alongside audio effects component which haven't been properly implemented yet.
 
 
 # Project Organization

@@ -20,6 +20,8 @@ export default function DramaTune() {
   const [addFade, setAddFade] = useState(false);
   const [moodIntensity, setMoodIntensity] = useState(50);
   const [instrumentation, setInstrumentation] = useState(50);
+  const [finalVideoFilename, setFinalVideoFilename] = useState(null);
+
 
   useEffect(() => {
   const brown = "#5C3A1E";
@@ -99,6 +101,44 @@ export default function DramaTune() {
   }
 };
 
+   /*implement fade function */
+
+  /*
+  const handleApplyFade = async () => {
+    if (!finalVideoUrl) return;
+
+    if (!finalVideoFilename) return;
+
+    const formData = new FormData();
+    formData.append('video_name', finalVideoFilename);
+    formData.append('fade_duration', '2000'); // in ms
+
+    try {
+  const response = await fetch('http://localhost:5001/apply_fade', {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Server returned ${response.status}`);
+  }
+
+  const blob = await response.blob();
+  const url = URL.createObjectURL(blob);
+  setFinalVideoUrl(url);
+} catch (err) {
+
+  console.error("Fade request failed:", err);
+
+}
+
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    setFinalVideoUrl(url); // replace with faded version
+  };
+
+   */
+
   const handleGenerateVideo = async () => {
     if (!selectedTrack || !videoRef.current) return;
 
@@ -136,6 +176,7 @@ export default function DramaTune() {
       const blob = await response.blob();
       const mergedUrl = URL.createObjectURL(blob);
       setFinalVideoUrl(mergedUrl);
+      setFinalVideoFilename(`merged_${file.name}`);  // file.name = "uploaded_video.mp4"
     } catch (error) {
       console.error("Error generating merged video:", error);
     } finally {
@@ -240,7 +281,7 @@ export default function DramaTune() {
             </div>
         )}
 
-        {/*Fine tuning components*/}
+        {/*Fine-tuning components*/}
 
   {finalVideoUrl && (
   <div className="space-y-4 mt-4">
@@ -252,7 +293,10 @@ export default function DramaTune() {
         type="checkbox"
         id="fade"
         checked={addFade}
-        onChange={() => setAddFade(!addFade)}
+        onChange={async () => {
+  setAddFade(true); // update state
+  //await handleApplyFade(); // immediately trigger fade
+}}
       />
     </div>
 
@@ -283,7 +327,6 @@ export default function DramaTune() {
       </div>
   </div>
   )}
-
 
           {/*second progress bar*/}
           {progressVisible && (

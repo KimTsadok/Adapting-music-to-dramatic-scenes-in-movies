@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Adapting-music-to-dramatic-scenes-in-movies
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -72,9 +72,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 how to run the project:
 - run the backend in the flask terminal by: >>>python backend.py
 - run the frontend and the project website in the main terminal by: npm start
-
-# Adapting-music-to-dramatic-scenes-in-movies
-
 
 
 # Project Organization

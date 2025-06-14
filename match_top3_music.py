@@ -36,5 +36,6 @@ for _, video_row in video_df.iterrows():
 # Save to CSV
 output_df = pd.DataFrame(matches)
 output_df.to_csv("video_music_matches.csv", index=False)
+#this is the old file, the new updated file is final_video_music_matches.csv
 
 print("Top 3 music matches for each video saved to video_music_matches.csv")

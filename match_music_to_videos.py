@@ -27,6 +27,8 @@ music_df['normalized_tempo'] = music_scaler.fit_transform(music_df[['tempo']])
 video_df.to_csv('normalized_video_rhythm.csv', index=False)
 music_df.to_csv('normalized_music_tempo.csv', index=False)
 
+#normalized_music_tempo.csv is the old file, the new updated file is normalized_music_features.csv
+
 print("Normalization complete. Data saved to CSV.")
 
 

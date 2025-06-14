@@ -70,7 +70,98 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 ## App
 
-how to run the project: (in Win64, Pycharm)
+how to run the project: 
+
+# 🛠 How to Set Up and Run This Project (All Windows Environments)
+
+Please follow these steps:
+
+---
+
+## ✅ Step 1: Clone the Repository
+
+```
+git clone https://github.com/KimTsadok/Adapting-music-to-dramatic-scenes-in-movies.git
+cd Adapting-music-to-dramatic-scenes-in-movies
+```
+
+---
+
+## ✅ Step 2: Create a Virtual Environment (if you don’t have one yet)
+
+```
+python -m venv .venv
+```
+
+This creates a folder called `.venv` with your isolated Python environment.
+
+---
+
+## ✅ Step 3: Activate the Virtual Environment
+
+Choose based on your terminal:
+
+### ▶ Command Prompt (cmd.exe):
+
+```
+.venv\Scripts\activate
+```
+
+### ▶ PowerShell:
+
+```
+.venv\Scripts\Activate.ps1
+```
+
+> If you get a policy error, run PowerShell as Administrator and run:
+>
+> ```
+> Set-ExecutionPolicy RemoteSigned
+> ```
+
+### ▶ Git Bash (MINGW64):
+
+```
+source .venv/Scripts/activate
+```
+
+You should now see `(.venv)` at the start of your terminal prompt ✅
+
+---
+
+## ✅ Step 4: Install Dependencies
+
+```
+pip install -r requirements.txt
+```
+
+---
+
+## ✅ Step 5: Download the Machine Learning Model
+
+Run the following script to automatically download the trained `.pkl` model from Google Drive:
+
+```
+python load_model_from_drive.py
+```
+
+---
+
+## ✅ Step 6: Test the Model
+
+To confirm the model works and generates music matches:
+
+```bash
+python match_music_random_forest.py
+```
+
+This will output top 3 music matches per video and confirm the ML model runs successfully.
+
+---
+
+Need help? Open an issue or contact the repository maintainer.
+
+You're done ! 🎉 Now you can proceed with running the project smoothly!
 - run the backend in the flask terminal by: >>>python backend.py
 - run the frontend and the project website in the main terminal by: npm start
 

@@ -12,9 +12,9 @@ if not os.path.exists(output_path):
     print("Downloading model from Google Drive...")
     gdown.download(url, output_path, quiet=False)
 else:
-    print("✅ Model already exists locally.")
+    print("Model already exists locally.")
 
 # Load the model
-print("📦 Loading model...")
+print("Loading model...")
 model = joblib.load(output_path)
-print("✅ Model loaded and ready.")
+print("Model loaded and ready.")

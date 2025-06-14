@@ -60,7 +60,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
-print("✅ Model trained successfully!")
+print(" Model trained successfully!")
 
 # ----------------------------
 # Step 3: Predict top 3 matches for each video
@@ -96,7 +96,7 @@ output_df = pd.DataFrame([
     for vid, musics in top_3_matches.items()
 ])
 output_df.to_csv('top_3_matches.csv', index=False)
-print("\n📁 Results saved to top_3_matches.csv")
+print("\n Results saved to top_3_matches.csv")
 
 # Save the model for UI
 joblib.dump(model, 'random_forest_model.pkl')

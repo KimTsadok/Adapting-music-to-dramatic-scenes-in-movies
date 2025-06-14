@@ -40,10 +40,10 @@ for filename in os.listdir(video_folder):
 
         # Get the most common emotion in the video
         dominant_emotion = max(set(emotions), key=emotions.count) if emotions else "neutral"
-        print(f"✅ {filename}: {dominant_emotion}")
+        print(f" {filename}: {dominant_emotion}")
         results.append({"video": filename, "emotion": dominant_emotion})
 
 # Save to CSV
 df = pd.DataFrame(results)
 df.to_csv("video_emotions.csv", index=False)
-print("🎉 Saved to video_emotions.csv")
+print(" Saved to video_emotions.csv")

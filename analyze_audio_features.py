@@ -30,15 +30,15 @@ for filename in os.listdir(music_dir):
                 'volume': float(avg_volume)  # already safe, but double-safe now
             })
 
-            print(f"✅ {filename}: {float(tempo):.2f} BPM, Volume: {avg_volume:.5f}")
+            print(f" {filename}: {float(tempo):.2f} BPM, Volume: {avg_volume:.5f}")
 
         except Exception as e:
-            print(f'❌ Error processing {filename}: {e}')
+            print(f' Error processing {filename}: {e}')
 
 # Save to CSV
 df = pd.DataFrame(results)
 df.to_csv('music_audio_features.csv', index=False) #previously music_tempo_scores.csv
-print("🎉 Audio features saved to music_audio_features.csv")
+print(" Audio features saved to music_audio_features.csv")
 
 #Normilizing audio features in order to create better matching (0 to 1 values)
 
@@ -53,4 +53,4 @@ df[['tempo_norm', 'volume_norm']] = scaler.fit_transform(df[['tempo', 'volume']]
 
 # Step 4 – Save the result
 df.to_csv("normalized_music_features.csv", index=False)
-print("✅ Saved to normalized_music_features.csv")
+print(" Saved to normalized_music_features.csv")

@@ -37,7 +37,7 @@ for _, video_row in video_df.iterrows():
 
     # Get target volume based on emotion
     if emotion not in emotion_to_volume:
-        print(f"⚠️ Skipping {vid} - unknown emotion: {emotion}")
+        print(f" Skipping {vid} - unknown emotion: {emotion}")
         continue
     target_volume = emotion_to_volume[emotion]
 
@@ -63,4 +63,4 @@ for _, video_row in video_df.iterrows():
 # Export results
 matches_df = pd.DataFrame(matches)
 matches_df.to_csv('final_video_music_matches.csv', index=False)
-print("🎯 Matching complete. Saved to final_video_music_matches.csv")
+print("Matching complete. Saved to final_video_music_matches.csv")

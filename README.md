@@ -72,13 +72,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 how to run the project: 
 
-## 🛠 How to Set Up and Run This Project (All Windows Environments)
+## 🛠 How to Set Up and Run This Project (All Environments)
 
-Please follow these steps:
+Follow these steps to get the project running on **Windows, macOS, or Linux**.
+
+This guide covers **Command Prompt**, **PowerShell**, **Git Bash**, and Unix-based terminals.
 
 ---
 
-## ✅ Step 1: Clone the Repository
+##  Step 1: Clone the Repository
 
 ```
 git clone https://github.com/KimTsadok/Adapting-music-to-dramatic-scenes-in-movies.git
@@ -87,7 +89,7 @@ cd Adapting-music-to-dramatic-scenes-in-movies
 
 ---
 
-## ✅ Step 2: Create a Virtual Environment (if you don’t have one yet)
+##  Step 2: Create a Virtual Environment (if you don’t have one yet)
 
 ```
 python -m venv .venv
@@ -97,17 +99,19 @@ This creates a folder called `.venv` with your isolated Python environment.
 
 ---
 
-## ✅ Step 3: Activate the Virtual Environment
+##  Step 3: Activate the Virtual Environment
+
+### ▶ Windows
 
 Choose based on your terminal:
 
-### ▶ Command Prompt (cmd.exe):
+#### • Command Prompt (cmd.exe):
 
 ```
 .venv\Scripts\activate
 ```
 
-### ▶ PowerShell:
+#### • PowerShell:
 
 ```
 .venv\Scripts\Activate.ps1
@@ -119,17 +123,23 @@ Choose based on your terminal:
 > Set-ExecutionPolicy RemoteSigned
 > ```
 
-### ▶ Git Bash (MINGW64):
+#### • Git Bash (MINGW64):
 
 ```
 source .venv/Scripts/activate
+```
+
+### ▶ macOS / Linux:
+
+```
+source .venv/bin/activate
 ```
 
 You should now see `(.venv)` at the start of your terminal prompt ✅
 
 ---
 
-## ✅ Step 4: Install Dependencies
+##  Step 4: Install Dependencies
 
 ```
 pip install -r requirements.txt
@@ -137,7 +147,7 @@ pip install -r requirements.txt
 
 ---
 
-## ✅ Step 5: Download the Machine Learning Model
+##  Step 5: Download the Machine Learning Model
 
 Run the following script to automatically download the trained `.pkl` model from Google Drive:
 
@@ -147,11 +157,11 @@ python load_model_from_drive.py
 
 ---
 
-## ✅ Step 6: Test the Model
+##  Step 6: Test the Model
 
 To confirm the model works and generates music matches:
 
-```bash
+```
 python match_music_random_forest.py
 ```
 

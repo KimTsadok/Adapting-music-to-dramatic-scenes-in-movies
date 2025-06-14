@@ -86,7 +86,7 @@ for _, video in video_data.iterrows():
     top_3_matches[video_id] = top3_music_ids
 
 # Print results
-print("\n🎵 Top 3 Music Matches for Each Video:")
+print("\n Top 3 Music Matches for Each Video:")
 for video_id, music_ids in top_3_matches.items():
     print(f"Video {video_id}: {music_ids}")
 

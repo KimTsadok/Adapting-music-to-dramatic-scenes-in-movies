@@ -1,39 +1,44 @@
-import joblib
 import pandas as pd
 import numpy as np
+import joblib
 from analyze_rhythm import estimate_rhythm
+from emotion_utils import detect_emotion_from_video
 
-#To be updated
+# Load model and features
+model = joblib.load("random_forest_model.pkl")
+music_df = pd.read_csv("normalized_music_features.csv")  # expects: music, tempo_norm, volume_norm
 
-# Load model and music data once
-model = joblib.load('random_forest_model.pkl')
-music_data = pd.read_csv('normalized_music_tempo.csv')
+# Define emotion encoding
+emotion_labels = ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
+emotion_to_index = {e: i for i, e in enumerate(emotion_labels)}
 
-def get_top3_music_for_video(video_path, estimate_rhythm):
-    """
-    video_path: path to uploaded video file
-    estimate_rhythm: your function for getting rhythm from video
-    Returns: List of top 3 music IDs (or names)
-    """
-    rhythm_score = estimate_rhythm(video_path)  # A number, e.g., 223
+def get_top3_music_for_video(video_path):
+    # 1. Rhythm detection
+    rhythm_score = estimate_rhythm(video_path)
+    normalized_rhythm = (rhythm_score - 0) / (300 - 0)
 
-    # Replace these with your real min/max!
-    min_rhythm = 0
-    max_rhythm = 300
+    # 2. Emotion detection
+    video_emotion = detect_emotion_from_video(video_path)
+    emotion_index = emotion_to_index.get(video_emotion, -1)
 
-    normalized_rhythm = (rhythm_score - min_rhythm) / (max_rhythm - min_rhythm)
+    # 3. Predict match score per music track
+    def predict_score(row):
+        input_vec = [
+            normalized_rhythm,
+            emotion_index,
+            row['tempo_norm'],
+            row['volume_norm']
+        ]
+        return model.predict([input_vec])[0]
 
-    # If you want to use the model (not recommended for now):
-    input_pairs = [[normalized_rhythm, tempo] for tempo in music_data['normalized_tempo']]
-    predictions = model.predict(input_pairs)
-    top3_indices = np.argsort(predictions)[-3:][::-1]
-    top3_music_ids = music_data.iloc[top3_indices]['music'].tolist()
+    music_df['score'] = music_df.apply(predict_score, axis=1)
+    top3 = music_df.nsmallest(3, 'score')
 
-    print("Video:", video_path, "Rhythm Normal Score:", normalized_rhythm)
-    print("First 5 music tempos:", music_data['normalized_tempo'].head())
-    print("First 5 prediction inputs:", input_pairs[:5])
-    print("First 5 predictions:", predictions[:5])
-    print("Top 3 music indices:", top3_indices)
-    print("Top 3 music IDs:", top3_music_ids)
-    return top3_music_ids
+    # 4. Output
+    print("Video:", video_path)
+    print("Detected emotion:", video_emotion, f"(index {emotion_index})")
+    print("Rhythm:", normalized_rhythm)
+    print("Top 3 music matches:")
+    print(top3[['music', 'score']])
 
+    return top3['music'].tolist(), video_emotion

@@ -8,4 +8,7 @@
     <orderEntry type="jdk" jdkName="Python 3.12 virtualenv at C:\Users\Kim\Adapting-music-to-dramatic-scenes-in-movies\.venv (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PackageRequirementsSettings">
+    <option name="modifyBaseFiles" value="true" />
+  </component>
 </module>

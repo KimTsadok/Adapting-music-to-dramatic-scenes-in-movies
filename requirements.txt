@@ -57,3 +57,9 @@ tqdm==4.67.1
 typing_extensions==4.14.0
 tzdata==2025.2
 urllib3==2.4.0
+
+Flask~=3.1.1
+flask-cors~=6.0.0
+pydub~=0.25.1
+mediapipe~=0.10.21
+librosa~=0.11.0

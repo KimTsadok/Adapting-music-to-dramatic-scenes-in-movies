@@ -213,49 +213,61 @@ here is the various stages of using the app:
 
 # Project Organization
 ```
-├── README.md                  <- Project overview and instructions.
+├── README.md                     <- Project overview and instructions.
+├── LICENSE                       <- MIT License.
+
+├── .gitignore                    <- Git ignore rules.
+├── requirements.txt              <- Python dependencies for backend.
+├── package.json                  <- Node.js frontend dependencies.
+├── package-lock.json             <- Locked versions of npm packages.
+
+├── backend.py                    <- Flask backend: handles upload, analysis, merge.
+├── load_model_from_drive.py      <- Downloads the ML model from Google Drive.
+
+├── analyze_rhythm.py             <- Rhythm detection from video (BPM etc.).
+├── analyze_audio_features.py     <- Feature extraction from audio.
+├── emotion_utils.py              <- Detects dominant facial emotion from video.
+├── music_recommendation.py       <- Core logic: matches video to music using ML model.
+
+├── match_music_random_forest.py  <- Music-video matching using random forest model.
+├── match_music_to_videos.py      <- Basic matching using rhythm/tempo only.
+├── match_music_with_emotion.py   <- Matching including emotion filtering.
+├── match_music_combined.py       <- Combined method.
+├── match_top3_music.py           <- Top 3 closest tracks script.
+
+├── batch_emotion_detector.py     <- Detect emotions for a batch of videos.
+
 │
-├── Assignments               <- Project documentation.
-│   ├── Detailed Design SDD.docx
-│   ├── Detailed requirements.docx
-│   └── Literature Review.docx
+├── music/                        <- Music tracks (MP3s).
+├── uploads/                      <- Uploaded videos via frontend (temporary).
+├── videos/                       <- Final output videos (with music).
+├── public/                       <- React public folder (HTML shell, etc.).
+├── src/                          <- React frontend source code (DramaTune app).
+│   ├── App.js                    <- Main app logic.
+│   ├── DramaTune.js              <- Core frontend for video/music interaction.
+│   ├── index.js                  <- Entry point for React.
+│   └── index.css                 <- Styling.
+
 │
-├── music                     <- Music tracks to be analyzed and matched.
+Assignments/
+├── Detailed Design SDD.docx            <- System architecture, components, and data flow.
+├── Detailed requirements.docx          <- Functional and non-functional requirements.
+├── Literature Review.docx              <- Academic and technical background research.
+├── Software Test Design (STD) - DramaTune.docx  <- Test cases and expected outcomes.
+├── Software Test Plan (STP) - DramaTune.docx    <- Strategy, scope, tools, and schedule for testing.
+
 │
-├── uploads                   <- User-uploaded video files.
+├── random_forest_model.pkl       <- Trained ML model for matching (needs to be locally downloaded from GD).
 │
-├── videos                    <- Final output videos with music applied.
-│
-├── .venv                     <- Python virtual environment (not tracked by Git).
-│
-├── node_modules              <- Node.js dependencies (auto-generated, not tracked by Git).
-│
-├── package.json              <- Frontend project metadata and dependencies.
-├── package-lock.json         <- Locked versions of installed npm packages.
-│
-├── backend.py                <- Flask backend server: handles analysis and merging requests.
-│
-├── analyze_rhythm.py         <- Extracts rhythmic features from user-uploaded videos.
-├── analyze_tempo.py          <- Extracts tempo and features from music tracks.
-│
-├── match_music_random_forest.py  <- Matches music to video using trained Random Forest model.
-├── match_music_to_videos.py      <- Matches music by comparing normalized rhythm/tempo.
-├── match_top3_music.py           <- Selects top 3 closest music tracks per video.
-├── music_recommendation.py       <- Orchestrates the full recommendation pipeline.
-│
-├── random_forest_model.pkl   <- Trained model used for music recommendation.
-│
-├── music_tempo_scores.csv        <- Raw tempo values from music analysis.
-├── video_rhythm_results.csv      <- Raw rhythm values from video analysis.
-├── normalized_music_tempo.csv    <- Normalized version of music tempo data.
-├── normalized_video_rhythm.csv   <- Normalized version of video rhythm data.
-│
-├── top_3_matches.csv             <- Output file: top 3 recommended tracks for each video.
-├── video_music_matches.csv       <- Output file: all video–music similarity scores.
-│
-├── src                      <- Frontend React source code.
-│   ├── App.js               <- Main app component for DramaTune.
-│   ├── DramaTune.js         <- Core UI and frontend logic for upload, analysis, and playback.
-│   ├── index.js             <- React entry point.
-│   └── index.css            <- Styling for the user interface.
+├── final_video_music_matches.csv <- Final results: video to best matching tracks.
+├── top_3_matches.csv             <- Top 3 matches per video.
+├── video_music_matches.csv       <- All match scores (video × music).
+├── video_emotions.csv            <- Detected emotion for each video.
+├── video_rhythm_results.csv      <- Raw video rhythm scores.
+├── normalized_video_rhythm.csv   <- Normalized video rhythm data.
+├── music_tempo_scores.csv        <- Raw music tempo results.
+├── normalized_music_tempo.csv    <- Normalized music tempo data.
+├── music_audio_features.csv      <- Music tempo + volume features.
+├── normalized_music_features.csv <- Final merged CSV (tempo, volume, normalized).
+
 ```

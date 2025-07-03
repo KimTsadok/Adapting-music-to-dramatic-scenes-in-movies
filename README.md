@@ -255,6 +255,7 @@ Assignments/
 ├── Literature Review.docx              <- Academic and technical background research.
 ├── Software Test Design (STD) - DramaTune.docx  <- Test cases and expected outcomes.
 ├── Software Test Plan (STP) - DramaTune.docx    <- Strategy, scope, tools, and schedule for testing.
+├── Final Report - DramaTune Kim Tsadok.docx    <- Full documentation of the project including approach, implementation, results, and conclusions.
 
 │
 ├── random_forest_model.pkl       <- Trained ML model for matching (needs to be locally downloaded from GD).
